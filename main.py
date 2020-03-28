@@ -140,7 +140,38 @@ def TransY(a):
 
 def TransZ(a):
     return Trans(0,0,a)
-        
+
+def RotX(theta):
+    M = Id4d()
+    c = np.cos(theta)
+    s = np.sin(theta)
+    M[1][1] = c
+    M[1][2] = s
+    M[2][1] = -s
+    M[2][2] = c
+    return M
+
+def RotY(theta):
+    M = Id4d()
+    c = np.cos(theta)
+    s = np.sin(theta)
+    M[0][0] = c
+    M[0][2] = s
+    M[2][0] = -s
+    M[2][2] = c
+    return M
+
+def RotZ(theta):
+    M = Id4d()
+    c = np.cos(theta)
+    s = np.sin(theta)
+    M[0][0] = c
+    M[0][1] = s
+    M[1][0] = -s
+    M[1][1] = c
+    return M
+
+
             
             
         
