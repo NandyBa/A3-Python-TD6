@@ -12,11 +12,11 @@ class Vect4D():
         self.t = t
 
     def __str__(self):
-        res = "Vecteur : "
-        res += "x: "+str(self.x)
-        res += " y: "+str(self.y)
-        res += " z: "+str(self.z)
-        res += " t: "+str(self.t)
+        res = "Vecteur : \n"
+        res += " x: "+str(self.x) +"\n"
+        res += " y: "+str(self.y) +"\n"
+        res += " z: "+str(self.z) +"\n"
+        res += " t: "+str(self.t) +"\n"
         return res
     
     def module(self):
@@ -73,6 +73,42 @@ class Vect4D():
             z = self.z * other.z
             t = self.t
             return Vect4D(x,y,z,t)
+    
+
+class Mat4D():
+    def __init__(self, v1, v2, v3, v4):
+        if(type(v1) != Vect4D):
+            raise ValueError("v1 doit est une instance de Vect4D")
+        if(type(v2) != Vect4D):
+            raise ValueError("v2 doit est une instance de Vect4D")
+        if(type(v3) != Vect4D):
+            raise ValueError("v3 doit est une instance de Vect4D")
+        if(type(v4) != Vect4D):
+            raise ValueError("v4 doit est une instance de Vect4D")
+        
+        self.v1 = v1
+        self.v2 = v2
+        self.v3 = v3
+        self.v4 = v4
+    
+    def __str__(self):
+        res = "Matrice:\n"
+        v1 = self.v1
+        v2 = self.v2
+        v3 = self.v3
+        v4 = self.v4
+        M = []
+        M.append([v1.x, v2.x, v3.x, v4.x])
+        M.append([v1.y, v2.y, v3.y, v4.y])
+        M.append([v1.z, v2.z, v3.z, v4.z])
+        M.append([v1.t, v2.t, v3.t, v4.t])
+        M = np.array(M)
+        res += str(M)
+        return res
+
+    
+        
+        
             
             
         
