@@ -53,7 +53,28 @@ class Vect4D():
         Eq_z = self.z == other.z
         Eq_t = self.t == other.t
         return Eq_x and Eq_y and Eq_z and Eq_t
-    
 
+    def __mul__(self, other):
+        if(type(other) != Vect4D or np.isscalar(other)):
+            raise ValueError("les deux objets doivent être des objets 4D ou un vecteur et un scalaire")
+        if(type(other) != Vect4D and other.t != self.t):
+            raise ValueError("les deux vecteurs doivent avoir la même coordonée en temps")
+        
+        if(np.isscalar(other)):
+            x = other * self.x
+            y = other * self.y
+            z = other * self.z
+            t = self.t
+            return Vect4D(x,y,z,t)
+        else:
+            #Other est une intense de Vect4D
+            x = self.x * other.x
+            y = self.y * other.y
+            z = self.z * other.z
+            t = self.t
+            return Vect4D(x,y,z,t)
+            
+            
+        
 
    
