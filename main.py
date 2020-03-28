@@ -26,7 +26,7 @@ class Vect4D():
         if(type(other) != Vect4D):
             raise ValueError("les deux objets doivent être des objets 4D")
         if(other.t != self.t):
-            raise ValueError("les deux vecteurs doivent avoir la même coordonée")
+            raise ValueError("les deux vecteurs doivent avoir la même coordonée en temps")
         if(self.t == other.t):
             x = self.x + other.x
             y = self.y + other.y
