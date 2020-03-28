@@ -106,8 +106,40 @@ class Mat4D():
         res += str(M)
         return res
 
-    
-        
+
+def Id4d():
+    return np. identity(4)
+
+def SysmX():
+    M = Id4d()
+    M[0][0] = -1
+    return M
+
+def SysmY():
+    M = Id4d()
+    M[1][1] = -1
+    return M
+
+def SysmZ():
+    M = Id4d()
+    M[2][2] = -1
+    return M
+
+def Trans(x,y,z):
+    M = Id4d()
+    M[0][3] = x
+    M[1][3] = y
+    M[2][3] = z
+    return M
+
+def TransX(a):
+    return Trans(a,0,0)
+
+def TransY(a):
+    return Trans(0,a,0)
+
+def TransZ(a):
+    return Trans(0,0,a)
         
             
             
