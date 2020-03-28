@@ -90,6 +90,13 @@ class Mat4D():
         self.v2 = v2
         self.v3 = v3
         self.v4 = v4
+        M = []
+        M.append([v1.x, v2.x, v3.x, v4.x])
+        M.append([v1.y, v2.y, v3.y, v4.y])
+        M.append([v1.z, v2.z, v3.z, v4.z])
+        M.append([v1.t, v2.t, v3.t, v4.t])
+        M = np.array(M)
+        self.M = M
     
     def __str__(self):
         res = "Matrice:\n"
@@ -105,7 +112,37 @@ class Mat4D():
         M = np.array(M)
         res += str(M)
         return res
-
+    
+    """
+    Surchages des opérations
+    (surcharges simplifiée par l'utilisation de numpy)
+    """
+    def __add__(self, other):
+        if(type(other) == np.ndarray):
+            return self.M + other
+        elif(type(other) == Mat4D):
+            return self.M + other.M
+        
+    def __sub__(self, other):
+        if(type(other) == np.ndarray):
+            return self.M - other
+        elif(type(other) == Mat4D):
+            return self.M - other.M
+    
+    def __eq__(self, other):
+        if(type(other) == np.ndarray):
+            return self.M == other
+        elif(type(other) == Mat4D):
+            return self.M == other.M
+    
+    def __mul__(self, other):
+        if(type(other) == np.ndarray):
+            return self.M * other
+        elif(type(other) == Mat4D):
+            return self.M * other.M
+        elif(type(other) == Vect4D):
+            V = np.array([other.x, other.y, other.z, other.t])
+            return self.M * V
 
 def Id4d():
     return np. identity(4)
